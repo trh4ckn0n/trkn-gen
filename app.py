@@ -50,7 +50,7 @@ if st.button("🚀 Générer l’image avec DALL·E 3"):
                 response_format="url"
             )
             image_url = response.data[0].url
-            st.image(image_url, caption="Image générée par DALL·E 3", use_column_width=True)
+            st.image(image_url, caption="Image générée par DALL·E 3", use_container_width=True)
             st.markdown(f"[Télécharger l'image]({image_url})")
         except Exception as e:
             st.error(f"Erreur lors de la génération : {e}")
