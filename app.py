@@ -11,7 +11,6 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Page config
 st.set_page_config(page_title="DALL·E CyberWar Generator", layout="centered")
-st
 # Inject CSS (solution Streamlit-compatible)
 with open("assets/style.css") as f:
     css = f"<style>{f.read()}</style>"
