@@ -1,3 +1,4 @@
 streamlit
 openai
 python-dotenv
+argon2-cffi
