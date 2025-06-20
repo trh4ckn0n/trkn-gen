@@ -134,7 +134,7 @@ if page == "Générateur":
     st.snow()
     spinner_html = """
     <div class="spinner-anonymous">
-      <img src="https://github.com/trh4ckn0n/trkn-gen/raw/refs/heads/main/assets/68747470733a2f2f74476a3552794b2e706e67.png" alt="Anonymous">
+      <img src="https://raw.githubusercontent.com/trh4ckn0n/trkn-gen/refs/heads/main/assets/68747470733a2f2f692e696d6775722e636f6d2f74476a3552794b2e706e67.png" alt="Anonymous">
     </div>
     """
     st.markdown(spinner_html, unsafe_allow_html=True)
