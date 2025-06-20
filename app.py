@@ -10,7 +10,7 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Configuration de la page
-st.set_page_config(page_title="DALL·E CyberWar Generator", layout="centered")
+st.set_page_config(page_title="DALL·E Trhacknon Generator", layout="centered")
 
 # CSS personnalisé
 with open("assets/style.css") as f:
@@ -25,7 +25,7 @@ st.snow()
 with open("assets/Deep Secrets.mp3", "rb") as f:
     st.audio(f.read(), format="audio/mp3", start_time=0)
 # Titre glitch
-st.markdown("<h1 class='title glitch-effect'>⚔️ DALL·E 3 - Cyberwar Image Generator</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='title glitch-effect'>⚔️ DALL·E 3 - Trhacknon Image Generator</h1>", unsafe_allow_html=True)
 st.toast("⚡ FCK Israhell", icon="👾")
 st.markdown(":rainbow[Stop the war!!]")
 
@@ -62,7 +62,7 @@ Dark background, green/black/red contrast, matrix style, digital anarchy.
 
 # 🚀 Lancement de génération
 if st.button("🚀 Générer l’image avec DALL·E 3"):
-    with st.spinner("🧠 Génération cyberpunk en cours..."):
+    with st.spinner("😈 Génération image en cours..."):
         st.markdown(spinner_html, unsafe_allow_html=True)
         try:
             response = openai.images.generate(
