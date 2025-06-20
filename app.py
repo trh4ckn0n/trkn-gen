@@ -24,7 +24,7 @@ st.snow()
 # 🎵 Audio ambiant avec autoplay invisible
 audio_file = "assets/Deep Secrets.mp3"
 audio_html = """
-<audio autoplay loop muted style="display:none;">
+<audio autoplay loop style="display:none;">
   <source src="{}" type="audio/mp3">
   Ton navigateur ne supporte pas l'audio HTML5.
 </audio>
