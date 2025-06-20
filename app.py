@@ -31,7 +31,7 @@ st.markdown(spinner_html, unsafe_allow_html=True)
 #    st.audio(f.read(), format="audio/mp3", start_time=0)
 audio_html = """
 <audio autoplay loop>
-  <source src="assets/Deep Secrets.mp3" type="audio/mpeg">
+  <source src="https://h.top4top.io/m_3457nnrbo0.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 """
