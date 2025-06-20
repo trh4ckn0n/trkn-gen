@@ -27,8 +27,15 @@ spinner_html = """
 st.markdown(spinner_html, unsafe_allow_html=True)
 # 🎵 Audio ambiant avec autoplay invisible
 # 🎵 Audio ambiant avec autoplay invisible
-with open("assets/Deep Secrets.mp3", "rb") as f:
-    st.audio(f.read(), format="audio/mp3", start_time=0)
+#with open("assets/Deep Secrets.mp3", "rb") as f:
+#    st.audio(f.read(), format="audio/mp3", start_time=0)
+audio_html = """
+<audio autoplay loop>
+  <source src="assets/Deep Secrets.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+"""
+st.markdown(audio_html, unsafe_allow_html=True)
 # Titre glitch
 st.markdown("<h1 class='title glitch-effect'>⚔️ DALL·E 3 - Trhacknon Image Generator</h1>", unsafe_allow_html=True)
 st.toast("⚡ FCK Israhell", icon="👾")
