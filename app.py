@@ -19,7 +19,12 @@ with open("assets/style.css") as f:
 
 # ❄️ Neige de fond
 st.snow()
-
+spinner_html = """
+<div class="spinner-anonymous">
+  <img src="68747470733a2f2f692e696d6775722e636f6d2f74476a3552794b2e706e67.png" alt="Anonymous">
+</div>
+"""
+st.markdown(spinner_html, unsafe_allow_html=True)
 # 🎵 Audio ambiant avec autoplay invisible
 # 🎵 Audio ambiant avec autoplay invisible
 with open("assets/Deep Secrets.mp3", "rb") as f:
