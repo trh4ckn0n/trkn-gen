@@ -31,8 +31,8 @@ st.toast("⚡ FCK Israhell", icon="👾")
 st.markdown(":rainbow[Stop the war!!]")
 
 # 🎙️ Entrée audio optionnelle
-st.markdown("#### 🗣️ Enregistrer une idée vocale pour l’inspiration (optionnel)")
-audio = st.audio(st.audio_input("Enregistre ton idée"), format="audio/wav")
+# st.markdown("#### 🗣️ Enregistrer une idée vocale pour l’inspiration (optionnel)")
+# audio = st.audio(st.audio_input("Enregistre ton idée"), format="audio/wav")
 
 # 📸 Choix utilisateur
 theme = st.selectbox("🎯 Thème principal", [
