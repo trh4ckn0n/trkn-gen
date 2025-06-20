@@ -10,7 +10,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 # Design custom
 st.set_page_config(page_title="DALL·E CyberWar Generator", layout="centered")
 st.markdown('<link href="assets/style.css" rel="stylesheet">', unsafe_allow_html=True)
-st.markdown("<h1 class='title'>⚔️ DALL·E 3 - Cyberwar Image Generator</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='title glitch-effect'>⚔️ DALL·E 3 - Cyberwar Image Generator</h1>", unsafe_allow_html=True)
 
 # Inputs
 theme = st.selectbox("🎯 Thème principal", [
