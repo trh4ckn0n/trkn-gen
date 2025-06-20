@@ -22,7 +22,7 @@ st.snow()
 
 # 🎵 Audio ambiant / Intro hacker theme
 st.markdown("### 🎧 Ambiance sonore cyberpunk")
-audio_file = open("assets/'Deep Secrets.mp3'", "rb")  # ← mets ta musique dans ce fichier
+audio_file = open("assets/Deep Secrets.mp3", "rb")  # ← mets ta musique dans ce fichier
 st.audio(audio_file.read(), format="audio/mp3")
 
 # Titre glitch
