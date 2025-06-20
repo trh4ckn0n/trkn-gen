@@ -1,3 +1,5 @@
+# app.py (partie haute)
+
 import os
 import openai
 import streamlit as st
@@ -7,11 +9,17 @@ from dotenv import load_dotenv
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# Design custom
+# Page config
 st.set_page_config(page_title="DALL·E CyberWar Generator", layout="centered")
-st.markdown('<link href="assets/style.css" rel="stylesheet">', unsafe_allow_html=True)
-st.markdown("<h1 class='title glitch-effect'>⚔️ DALL·E 3 - Cyberwar Image Generator</h1>", unsafe_allow_html=True)
+st
+# Inject CSS (solution Streamlit-compatible)
+with open("assets/style.css") as f:
+    css = f"<style>{f.read()}</style>"
+    st.markdown(css, unsafe_allow_html=True)
 
+# Titre glitch
+st.markdown("<h1 class='title glitch-effect'>⚔️ DALL·E 3 - Cyberwar Image Generator</h1>", unsafe_allow_html=True)
+# Design custom
 # Inputs
 theme = st.selectbox("🎯 Thème principal", [
     "Cyberwar & Anonymous", "Street Art contre Fake News", "Surveillance & Résistance", "Désinformation Iranienne", "Autre"
