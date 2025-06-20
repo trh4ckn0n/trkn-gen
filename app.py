@@ -20,10 +20,16 @@ with open("assets/style.css") as f:
 # ❄️ Neige de fond
 st.snow()
 
-# 🎵 Audio ambiant / Intro hacker theme
-st.markdown("### 🎧 Ambiance sonore cyberpunk")
-audio_file = open("assets/Deep Secrets.mp3", "rb")  # ← mets ta musique dans ce fichier
-st.audio(audio_file.read(), format="audio/mp3")
+# 🎵 Audio ambiant avec autoplay invisible
+# 🎵 Audio ambiant avec autoplay invisible
+audio_file = "assets/Deep Secrets.mp3"
+audio_html = """
+<audio autoplay loop muted style="display:none;">
+  <source src="{}" type="audio/mp3">
+  Ton navigateur ne supporte pas l'audio HTML5.
+</audio>
+""".format(audio_file)
+st.markdown(audio_html, unsafe_allow_html=True)
 
 # Titre glitch
 st.markdown("<h1 class='title glitch-effect'>⚔️ DALL·E 3 - Cyberwar Image Generator</h1>", unsafe_allow_html=True)
