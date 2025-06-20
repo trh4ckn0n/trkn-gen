@@ -7,6 +7,17 @@ from argon2 import PasswordHasher
 from argon2.exceptions import VerifyMismatchError
 from datetime import datetime
 
+# Fonction rerun compatible Streamlit (évite st.experimental_rerun)
+def rerun():
+    try:
+        # Streamlit >=1.18
+        from streamlit.runtime.scriptrunner.script_runner import RerunException
+        from streamlit.runtime.scriptrunner import get_script_run_ctx
+        raise RerunException(get_script_run_ctx())
+    except ImportError:
+        # fallback pour anciennes versions
+        st.stop()
+
 # --- Initialisation ---
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -14,11 +25,9 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 DB_FILE = "app_data.db"
 ph = PasswordHasher()
 
-# Connexion DB (création si pas existante)
 conn = sqlite3.connect(DB_FILE, check_same_thread=False)
 cursor = conn.cursor()
 
-# Création tables si pas existantes
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -36,7 +45,6 @@ CREATE TABLE IF NOT EXISTS images (
 """)
 conn.commit()
 
-# Création user admin (à lancer une fois)
 def create_admin_user():
     username = "admin"
     password = os.getenv("ADMIN_PASSWORD")
@@ -50,8 +58,6 @@ def create_admin_user():
         print(f"Admin user '{username}' créé avec le mot de passe issu de .env")
 
 create_admin_user()
-
-# --- Fonctions ---
 
 def verify_password(username, password):
     cursor.execute("SELECT password_hash FROM users WHERE username=?", (username,))
@@ -77,13 +83,10 @@ def delete_image(image_id):
     cursor.execute("DELETE FROM images WHERE id=?", (image_id,))
     conn.commit()
 
-# --- SESSION STATE ---
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 if "username" not in st.session_state:
     st.session_state.username = ""
-
-# --- Streamlit App ---
 
 st.set_page_config(page_title="DALL·E Trhacknon Generator", layout="centered")
 
@@ -102,7 +105,7 @@ if page == "Admin":
                     st.session_state.logged_in = True
                     st.session_state.username = username
                     st.success(f"Bienvenue {username} !")
-                    st.experimental_rerun()
+                    rerun()  # Utilisation de la fonction rerun personnalisée
                 else:
                     st.error("Login ou mot de passe incorrect.")
     else:
@@ -110,7 +113,7 @@ if page == "Admin":
         if st.button("Se déconnecter"):
             st.session_state.logged_in = False
             st.session_state.username = ""
-            st.experimental_rerun()
+            rerun()
 
         images = get_all_images()
         if images:
@@ -120,12 +123,11 @@ if page == "Admin":
                 if st.button(f"Supprimer l'image #{img_id}"):
                     delete_image(img_id)
                     st.success(f"Image #{img_id} supprimée")
-                    st.experimental_rerun()
+                    rerun()
         else:
             st.info("Aucune image générée pour le moment.")
 
 if page == "Générateur":
-    # --- Ton code actuel, inchangé ---
     if os.path.exists("assets/style.css"):
         with open("assets/style.css") as f:
             css = f"<style>{f.read()}</style>"
